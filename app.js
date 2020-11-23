@@ -86,6 +86,7 @@ const createUser = (req, res) => {
     return
   }
   hash({password: newUser.password}, (err, pass, salt, hash) => {
+    delete newUser.password
     newUser._id = new Date().getTime();
     newUser.websites = newUser.websites.split(/,\s*/)
     newUser.hash = hash
